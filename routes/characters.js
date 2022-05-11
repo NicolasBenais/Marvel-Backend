@@ -6,12 +6,19 @@ const apiKey = process.env.API_KEY;
 
 router.get("/characters", (req, res) => {
   try {
+    const { skip, name } = req.query;
+
+    let filters = "";
+
+    if (name) {
+      filters = `&name=${name}`;
+    }
+
     axios
       .get(
-        `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${apiKey}`
+        `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${apiKey}${filters}`
       )
       .then((response) => {
-        // console.log(response.data);
         res.json(response.data);
       });
   } catch (error) {
