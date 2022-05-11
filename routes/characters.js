@@ -6,12 +6,12 @@ const apiKey = process.env.API_KEY;
 
 router.get("/characters", async (req, res) => {
   try {
-    const { skip, name } = req.query;
+    // const { skip, name } = req.query;
 
     let filters = "";
 
     if (name) {
-      filters = `&name=${name}`;
+      filters = `&name=${req.query.name}`;
     }
 
     const response = await axios.get(
