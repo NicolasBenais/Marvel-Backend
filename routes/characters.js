@@ -6,8 +6,6 @@ const apiKey = process.env.API_KEY;
 
 router.get("/characters", async (req, res) => {
   try {
-    // const { skip, name } = req.query;
-
     let filters = "";
 
     if (req.query.name) {
