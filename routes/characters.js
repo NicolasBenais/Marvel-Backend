@@ -4,7 +4,7 @@ const axios = require("axios");
 
 const apiKey = process.env.API_KEY;
 
-router.get("/characters", (req, res) => {
+router.get("/characters", async (req, res) => {
   try {
     const { skip, name } = req.query;
 
@@ -14,17 +14,11 @@ router.get("/characters", (req, res) => {
       filters = `&name=${name}`;
     }
 
-        const response = await axios.get(
-        `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${apiKey}${filters}`
-      );
-      
-        res.json(response.data);
-      
+    const response = await axios.get(
+      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${apiKey}${filters}`
+    );
 
-     
-
-
-
+    res.json(response.data);
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ message: error.message });
@@ -32,13 +26,12 @@ router.get("/characters", (req, res) => {
 });
 
 router.get("/characters/:characterId", (req, res) => {
-  try { 
+  try {
     const response = axios.get(
-        `https://lereacteur-marvel-api.herokuapp.com/character/${req.params.characterId}?apiKey=${apiKey}`
-      )
+      `https://lereacteur-marvel-api.herokuapp.com/character/${req.params.characterId}?apiKey=${apiKey}`
+    );
 
-        res.json(response.data);
-
+    res.json(response.data);
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ message: error.message });
