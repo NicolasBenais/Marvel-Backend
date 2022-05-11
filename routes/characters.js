@@ -10,7 +10,7 @@ router.get("/characters", async (req, res) => {
 
     let filters = "";
 
-    if (name) {
+    if (req.query.name) {
       filters = `&name=${req.query.name}`;
     }
 
