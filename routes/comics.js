@@ -8,6 +8,9 @@ router.get("/comics", async (req, res) => {
   try {
     let filters = "";
 
+    if (req.query.skip) {
+      filters += `&skip=${req.query.skip}`;
+    }
     if (req.query.title) {
       filters = `&title=${req.query.title}`;
     }

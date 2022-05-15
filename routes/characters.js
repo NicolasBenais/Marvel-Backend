@@ -8,9 +8,6 @@ router.get("/characters", async (req, res) => {
   try {
     let filters = "";
 
-    // if (req.query.limit) {
-    //   filters += `&limit=${req.query.limit}`;
-    // }
     if (req.query.skip) {
       filters += `&skip=${req.query.skip}`;
     }
