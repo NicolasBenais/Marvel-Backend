@@ -20,7 +20,7 @@ router.post("/signup", async (req, res) => {
     } else {
       // Password Generator
       const salt = uid2(64);
-      const hash = SHA256(req.fields.password + salt).toString(encBase64);
+      const hash = SHA256(password + salt).toString(encBase64);
       const token = uid2(64);
 
       const newUser = new User({
